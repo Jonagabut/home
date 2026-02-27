@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Syamaira Exam MOD</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #050508;
+  --surface: #0d0d14;
+  --card: #0f0f18;
+  --border: #ff3c0022;
+  --accent: #ff3c00;
+  --accent2: #ff8c00;
+  --glow: #ff3c0055;
+  --glow2: #ff8c0033;
+  --text: #f0ede8;
+  --muted: #888880;
+  --discord: #5865F2;
+  --green: #00ff88;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Rajdhani', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  cursor: crosshair;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, #00000018 2px, #00000018 4px);
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* === HEADER === */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 3rem;
+  border-bottom: 1px solid var(--border);
+  background: #050508ee;
+  backdrop-filter: blur(20px);
+}
+
+.logo-wrap { display: flex; align-items: center; gap: .8rem; }
+
+.logo-hex {
+  width: 36px; height: 36px;
+  background: var(--accent);
+  clip-path: polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem;
+  animation: hexPulse 2s ease-in-out infinite;
+}
+
+@keyframes hexPulse {
+  0%,100% { filter: brightness(1); }
+  50% { filter: brightness(1.4) drop-shadow(0 0 8px var(--accent)); }
+}
+
+.logo-text {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.3rem;
+  letter-spacing: 3px;
+}
+.logo-text em { color: var(--accent); font-style: normal; }
+
+.status-pill {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: .65rem;
+  color: var(--green);
+  display: none;
+  align-items: center;
+  gap: .4rem;
+  border: 1px solid #00ff8822;
+  padding: .3rem .8rem;
+  letter-spacing: 1px;
+}
+@media(min-width:700px) { .status-pill { display: flex; } }
+
+.dot { width: 5px; height: 5px; background: var(--green); border-radius: 50%; animation: blink .9s step-end infinite; }
+@keyframes blink { 0%,100%{opacity:1}50%{opacity:0} }
+
+.dc-btn {
+  background: var(--discord);
+  color: #fff;
+  border: none;
+  padding: .55rem 1.3rem;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex; align-items: center; gap: .5rem;
+  transition: all .2s;
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+}
+.dc-btn:hover { filter: brightness(1.2); transform: translateY(-1px); }
+
+/* === HERO === */
+.hero {
+  position: relative;
+  min-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  overflow: hidden;
+}
+
+.hero-corner {
+  position: absolute;
+  width: 120px; height: 120px;
+  border: 1px solid var(--accent);
+  opacity: .2;
+}
+.hc-tl { top: 2rem; left: 2rem; border-right: none; border-bottom: none; }
+.hc-tr { top: 2rem; right: 2rem; border-left: none; border-bottom: none; }
+.hc-bl { bottom: 2rem; left: 2rem; border-right: none; border-top: none; }
+.hc-br { bottom: 2rem; right: 2rem; border-left: none; border-top: none; }
+
+.hero-tag {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: .72rem;
+  color: var(--accent);
+  letter-spacing: 4px;
+  margin-bottom: 1.2rem;
+  opacity: 0;
+  animation: fadeUp .4s .1s ease forwards;
+}
+
+.hero-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(4rem, 15vw, 11rem);
+  line-height: .85;
+  letter-spacing: 6px;
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: fadeUp .5s .2s ease forwards;
+}
+
+.ht1 { display: block; color: var(--text); }
+.ht2 {
+  display: block;
+  color: var(--accent);
+  text-shadow: 0 0 30px var(--glow), 0 0 60px var(--glow);
+  animation: glitch 5s 2s infinite;
+}
+
+@keyframes glitch {
+  0%,88%,100% { text-shadow: 0 0 30px var(--glow); transform: none; }
+  90% { text-shadow: -4px 0 var(--accent2), 4px 0 #00ffff; transform: skewX(-3deg); clip-path: polygon(0 30%, 100% 30%, 100% 60%, 0 60%); }
+  92% { text-shadow: 4px 0 var(--accent2), -4px 0 #00ffff; transform: skewX(3deg); clip-path: none; }
+  94% { text-shadow: 0 0 30px var(--glow); transform: none; }
+}
+
+.hero-sub {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: .8rem;
+  color: var(--muted);
+  max-width: 460px;
+  line-height: 1.9;
+  margin-bottom: 1rem;
+  opacity: 0;
+  animation: fadeUp .5s .3s ease forwards;
+}
+
+.api-alert {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: .7rem;
+  background: #ff3c000f;
+  border: 1px solid #ff3c0055;
+  padding: .8rem 1.2rem;
+  max-width: 500px;
+  text-align: left;
+  margin: 1rem 0 2.5rem;
+  opacity: 0;
+  animation: fadeUp .5s .4s ease forwards;
+}
+
+.alert-icon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+  animation: blink 1.2s step-end infinite;
+}
+
+.api-alert p {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: .7rem;
+  color: var(--muted);
+  line-height: 1.7;
+}
+.api-alert strong { color: var(--accent); }
+
+.hero-actions {
+  display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+  opacity: 0;
+  animation: fadeUp .5s .5s ease forwards;
+}
+
+.btn-fire {
+  background: var(--accent);
+  color: #000;
+  border: none;
+  padding: .85rem 2.5rem;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.15rem;
+  letter-spacing: 3px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex; align-items: center; gap: .6rem;
+  transition: all .2s;
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+  font-weight: 700;
+}
+.btn-fire:hover { background: var(--accent2); box-shadow: 0 0 40px var(--glow); transform: scale(1.03); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid #ffffff18;
+  padding: .85rem 2rem;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.15rem;
+  letter-spacing: 3px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex; align-items: center; gap: .6rem;
+  transition: all .2s;
+}
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+/* === SECTIONS === */
+.sec {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.sec.visible { opacity: 1; transform: none; }
+
+.sec-header { display: flex; align-items: flex-end; gap: 1.5rem; margin-bottom: 3rem; }
+.sec-label { font-family: 'Share Tech Mono', monospace; font-size: .65rem; color: var(--accent); letter-spacing: 2px; margin-bottom: .4rem; }
+.sec-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2rem, 5vw, 3.5rem); letter-spacing: 4px; line-height: 1; }
+.sec-rule { flex: 1; height: 1px; background: linear-gradient(90deg, var(--accent), transparent); opacity: .25; margin-bottom: .5rem; }
+
+/* === FEATURES GRID === */
+.feat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1px;
+  background: #ff3c0015;
+  border: 1px solid var(--border);
+}
+
+.feat-card {
+  background: var(--card);
+  padding: 2rem 1.8rem;
+  position: relative;
+  overflow: hidden;
+  transition: background .3s;
+}
+
+.feat-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px; height: 0;
+  background: linear-gradient(180deg, var(--accent), var(--accent2));
+  transition: height .4s ease;
+}
+
+.feat-card:hover { background: #12121f; }
+.feat-card:hover::before { height: 100%; }
+
+.feat-id {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: .62rem;
+  color: #ff3c0066;
+  letter-spacing: 2px;
+  margin-bottom: .8rem;
+}
+
+.feat-ico {
+  width: 46px; height: 46px;
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem;
+  margin-bottom: 1.2rem;
+  transition: border-color .3s, box-shadow .3s;
+}
+.feat-card:hover .feat-ico { border-color: var(--accent); box-shadow: 0 0 16px var(--glow); }
+
+.feat-card h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  margin-bottom: .5rem;
+}
+
+.feat-card p { font-size: .87rem; color: var(--muted); line-height: 1.6; }
+
+/* === API BANNER === */
+.api-sec {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem 5rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.api-sec.visible { opacity: 1; transform: none; }
+
+.api-box {
+  border: 1px solid var(--accent);
+  background: linear-gradient(135deg, #ff3c000a, #0f0f18);
+  padding: 2.5rem;
+  position: relative;
+}
+
+.api-box::before {
+  content: '// SECURITY_SYSTEM.exe';
+  position: absolute;
+  top: -1px; left: 2rem;
+  background: var(--bg);
+  padding: 0 .6rem;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: .62rem;
+  color: var(--accent);
+  letter-spacing: 2px;
+}
+
+.api-inner {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.api-badge {
+  width: 90px; height: 90px;
+  border: 2px solid var(--accent);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: .2rem;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  background: #ff3c0018;
+  animation: apiPulse 3s ease-in-out infinite;
+}
+@keyframes apiPulse { 0%,100%{filter:brightness(1)} 50%{filter:brightness(1.3) drop-shadow(0 0 12px var(--accent))} }
+.api-badge span:first-child { font-size: 1.8rem; line-height: 1; }
+.api-badge span:last-child { font-family: 'Share Tech Mono', monospace; font-size: .5rem; color: var(--accent); letter-spacing: 1px; }
+
+.api-content h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  letter-spacing: 4px;
+  color: var(--accent);
+  margin-bottom: .6rem;
+}
+.api-content p { font-size: .9rem; color: var(--muted); line-height: 1.8; }
+.api-content strong { color: var(--accent2); }
+
+.api-tags { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.2rem; }
+.api-tag {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: .62rem;
+  color: var(--accent);
+  border: 1px solid #ff3c0033;
+  padding: .2rem .7rem;
+  background: #ff3c0008;
+  letter-spacing: 1px;
+}
+
+/* === PRICING === */
+.price-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.price-card {
+  background: var(--card);
+  border: 1px solid #ffffff08;
+  padding: 2rem 1.8rem;
+  position: relative;
+  overflow: hidden;
+  transition: all .3s;
+}
+
+.price-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  transform: scaleX(0);
+  transition: transform .3s;
+}
+
+.price-card:hover { border-color: #ff3c0033; transform: translateY(-6px); box-shadow: 0 20px 60px #ff3c0018; }
+.price-card:hover::after { transform: scaleX(1); }
+
+.price-card.hot {
+  border-color: #ff3c0055;
+  background: linear-gradient(160deg, #ff3c000d, var(--card));
+}
+
+.hot-badge {
+  position: absolute;
+  top: 0; right: 0;
+  background: var(--accent);
+  color: #000;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: .75rem;
+  letter-spacing: 2px;
+  padding: .2rem .9rem;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 12px 100%);
+}
+
+.price-tier {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: .62rem;
+  color: var(--accent);
+  letter-spacing: 3px;
+  margin-bottom: 1.2rem;
+  display: flex; align-items: center; gap: .5rem;
+}
+.price-tier::before { content: '//'; opacity: .5; }
+
+.price-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3.8rem;
+  line-height: 1;
+  letter-spacing: 1px;
+  margin-bottom: .2rem;
+}
+.price-num sup { font-size: 1.4rem; vertical-align: super; color: var(--accent); }
+
+.price-dur {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: .66rem;
+  color: var(--muted);
+  letter-spacing: 1px;
+  margin-bottom: 1.8rem;
+}
+
+.plist { list-style: none; margin-bottom: 2rem; }
+.plist li {
+  font-size: .88rem; color: var(--muted);
+  padding: .4rem 0;
+  border-bottom: 1px solid #ffffff05;
+  display: flex; align-items: center; gap: .6rem;
+}
+.plist li::before { content: '▸'; color: var(--accent); font-size: .7rem; flex-shrink: 0; }
+
+.btn-price {
+  width: 100%;
+  background: transparent;
+  border: 1px solid #ff3c0044;
+  color: var(--text);
+  padding: .75rem;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 3px;
+  cursor: pointer;
+  transition: all .25s;
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+}
+
+.btn-price:hover { background: var(--accent); color: #000; border-color: var(--accent); box-shadow: 0 0 25px var(--glow); }
+.price-card.hot .btn-price { background: var(--accent); color: #000; border-color: var(--accent); }
+
+/* === MODAL === */
+.modal-overlay {
+  display: none;
+  position: fixed; inset: 0;
+  background: #00000099;
+  z-index: 1000;
+  align-items: center; justify-content: center;
+  backdrop-filter: blur(10px);
+}
+.modal-overlay.open { display: flex; }
+
+.modal {
+  background: var(--card);
+  border: 1px solid var(--accent);
+  max-width: 440px;
+  width: 92%;
+  animation: modalIn .25s cubic-bezier(.34,1.56,.64,1) both;
+  overflow: hidden;
+}
+
+@keyframes modalIn {
+  from { opacity:0; transform: scale(.9) translateY(20px); }
+  to { opacity:1; transform: none; }
+}
+
+.modal-bar {
+  background: var(--accent);
+  padding: .75rem 1.5rem;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.modal-bar span { font-family: 'Share Tech Mono', monospace; font-size: .72rem; color: #000; letter-spacing: 2px; }
+.modal-x { background: none; border: none; color: #000; font-size: 1.1rem; cursor: pointer; font-weight: bold; line-height: 1; }
+
+.modal-body { padding: 2rem; }
+
+.modal-selected {
+  background: #ff3c000f;
+  border: 1px solid #ff3c0033;
+  padding: .7rem 1rem;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: .75rem;
+  color: var(--accent);
+  letter-spacing: 1px;
+  margin-bottom: 1.5rem;
+}
+
+.modal-h { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 3px; margin-bottom: .5rem; }
+.modal-p { font-size: .87rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.5rem; }
+
+.steps { list-style: none; margin-bottom: 1.8rem; }
+.steps li { display: flex; gap: .8rem; align-items: flex-start; padding: .55rem 0; border-bottom: 1px solid #ffffff05; font-size: .87rem; color: var(--muted); }
+.sn {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: .65rem;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  min-width: 22px; height: 22px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.steps li strong { color: var(--text); }
+
+.modal-actions { display: flex; gap: .8rem; }
+
+.btn-dc {
+  flex: 1;
+  background: var(--discord);
+  color: #fff;
+  border: none;
+  padding: .85rem;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+  transition: all .2s;
+}
+.btn-dc:hover { filter: brightness(1.15); }
+
+.btn-cancel {
+  background: transparent;
+  border: 1px solid #ffffff15;
+  color: var(--muted);
+  padding: .85rem 1.2rem;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all .2s;
+}
+.btn-cancel:hover { border-color: var(--accent); color: var(--text); }
+
+/* === FOOTER === */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 2rem 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-brand { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; letter-spacing: 4px; color: var(--accent); }
+.footer-copy { font-family: 'Share Tech Mono', monospace; font-size: .62rem; color: var(--muted); letter-spacing: 1px; text-align: center; line-height: 1.8; }
+
+/* ANIM */
+@keyframes fadeUp {
+  from { opacity:0; transform: translateY(16px); }
+  to { opacity:1; transform: none; }
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--accent); }
+
+@media(max-width:600px) {
+  header { padding: 1rem 1.5rem; }
+  .sec, .api-sec { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .api-inner { grid-template-columns: 1fr; }
+  .sec-rule { display: none; }
+  .sec-header { flex-direction: column; align-items: flex-start; }
+  footer { flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo-wrap">
+    <div class="logo-hex">⚡</div>
+    <div class="logo-text">SYAMAIRA <em>MOD</em></div>
+  </div>
+  <div class="status-pill">
+    <div class="dot"></div>
+    SYSTEM_ONLINE · v3.7
+  </div>
+  <a href="https://discord.gg/kvjkNfrFJP" target="_blank" class="dc-btn">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03z"/></svg>
+    DISCORD
+  </a>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-corner hc-tl"></div>
+  <div class="hero-corner hc-tr"></div>
+  <div class="hero-corner hc-bl"></div>
+  <div class="hero-corner hc-br"></div>
+
+  <div class="hero-tag">ANDROID · EXAM · MOD · PREMIUM</div>
+  <h1 class="hero-title">
+    <span class="ht1">SYAMAIRA</span>
+    <span class="ht2">EXAM MOD</span>
+  </h1>
+  <p class="hero-sub">Bypass semua batasan platform ujian Android. Didukung sistem API unik yang terikat per perangkat — tidak bisa dibagi atau dipindahkan.</p>
+
+  <div class="api-alert">
+    <span class="alert-icon">⚠</span>
+    <p>API terikat eksklusif ke <strong>satu perangkat Android</strong>. Jika diinstall di HP lain → <strong>TIDAK AKAN BERFUNGSI</strong> atau memicu respons keamanan otomatis.</p>
+  </div>
+
+  <div class="hero-actions">
+    <a href="#harga" class="btn-fire">🔥 BELI SEKARANG</a>
+    <a href="https://discord.gg/kvjkNfrFJP" target="_blank" class="btn-ghost">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03z"/></svg>
+      JOIN DISCORD
+    </a>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="sec" id="fitur">
+  <div class="sec-header">
+    <div>
+      <div class="sec-label">// 01 — BYPASS_FEATURES</div>
+      <div class="sec-title">KEMAMPUAN MOD</div>
+    </div>
+    <div class="sec-rule"></div>
+  </div>
+  <div class="feat-grid">
+    <div class="feat-card">
+      <div class="feat-id">FEAT_001</div>
+      <div class="feat-ico">📌</div>
+      <h3>BYPASS PINNED APP</h3>
+      <p>Keluar dari mode Pinned / Kiosk tanpa terdeteksi. Bebas akses aplikasi lain saat sesi ujian berlangsung.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-id">FEAT_002</div>
+      <div class="feat-ico">🔊</div>
+      <h3>BYPASS MAX VOLUME</h3>
+      <p>Melewati pembatasan volume maksimum yang dipaksakan platform ujian. Atur volume sesuka hati.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-id">FEAT_003</div>
+      <div class="feat-ico">📋</div>
+      <h3>BYPASS COPY TEXT</h3>
+      <p>Salin teks yang diblokir oleh aplikasi ujian. Copy soal, opsi jawaban, dan konten apapun dengan bebas.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-id">FEAT_004</div>
+      <div class="feat-ico">📸</div>
+      <h3>BYPASS SCREENSHOT</h3>
+      <p>Ambil screenshot kapanpun meskipun platform ujian memblokir fitur tangkapan layar sepenuhnya.</p>
+    </div>
+  </div>
+</section>
+
+<!-- API SECURITY -->
+<div class="api-sec">
+  <div class="api-box">
+    <div class="api-inner">
+      <div class="api-badge">
+        <span>🛡️</span>
+        <span>API LOCK</span>
+      </div>
+      <div class="api-content">
+        <h3>SISTEM API UNIK PER ANDROID</h3>
+        <p>
+          Setiap lisensi yang dibeli <strong>terikat permanen</strong> ke API identifier unik dari perangkat Android kamu.
+          Jika ada yang mencoba menginstall di HP berbeda, aplikasi <strong>tidak akan berfungsi sama sekali</strong> — atau sistem keamanan otomatis akan aktif.
+          Lisensi bersifat <strong>non-transferable</strong>, tidak bisa dijual ulang atau dibagikan ke orang lain.
+        </p>
+        <div class="api-tags">
+          <span class="api-tag">DEVICE_LOCKED</span>
+          <span class="api-tag">API_BINDING</span>
+          <span class="api-tag">ANTI_SHARE</span>
+          <span class="api-tag">UNIQUE_TOKEN</span>
+          <span class="api-tag">AUTO_BLOCK</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRICING -->
+<section class="sec" id="harga">
+  <div class="sec-header">
+    <div>
+      <div class="sec-label">// 02 — PRICING</div>
+      <div class="sec-title">PILIH PAKET</div>
+    </div>
+    <div class="sec-rule"></div>
+  </div>
+  <div class="price-grid">
+
+    <div class="price-card">
+      <div class="price-tier">BASIC</div>
+      <div class="price-num"><sup>Rp</sup>35K</div>
+      <div class="price-dur">// AKSES 7 HARI</div>
+      <ul class="plist">
+        <li>Bypass Pinned App</li>
+        <li>Bypass Max Volume</li>
+        <li>API terikat 1 device</li>
+        <li>Support via Discord</li>
+      </ul>
+      <button class="btn-price" onclick="openModal('BASIC — Rp 35.000 / 7 Hari')">BELI SEKARANG</button>
+    </div>
+
+    <div class="price-card">
+      <div class="price-tier">STANDARD</div>
+      <div class="price-num"><sup>Rp</sup>65K</div>
+      <div class="price-dur">// AKSES 30 HARI</div>
+      <ul class="plist">
+        <li>Bypass Pinned App</li>
+        <li>Bypass Max Volume</li>
+        <li>Bypass Copy Text</li>
+        <li>API terikat 1 device</li>
+        <li>Support via Discord</li>
+      </ul>
+      <button class="btn-price" onclick="openModal('STANDARD — Rp 65.000 / 30 Hari')">BELI SEKARANG</button>
+    </div>
+
+    <div class="price-card hot">
+      <div class="hot-badge">🔥 TERLARIS</div>
+      <div class="price-tier">PRO</div>
+      <div class="price-num"><sup>Rp</sup>85K</div>
+      <div class="price-dur">// AKSES 90 HARI</div>
+      <ul class="plist">
+        <li>Semua fitur Standard</li>
+        <li>Bypass Screenshot</li>
+        <li>API terikat 1 device</li>
+        <li>Priority support</li>
+        <li>Update gratis 90 hari</li>
+      </ul>
+      <button class="btn-price" onclick="openModal('PRO — Rp 85.000 / 90 Hari')">BELI SEKARANG</button>
+    </div>
+
+    <div class="price-card">
+      <div class="price-tier">LIFETIME</div>
+      <div class="price-num"><sup>Rp</sup>100K</div>
+      <div class="price-dur">// AKSES SELAMANYA</div>
+      <ul class="plist">
+        <li>Semua fitur Pro</li>
+        <li>Semua 4 bypass</li>
+        <li>API terikat 1 device</li>
+        <li>VIP Discord channel</li>
+        <li>Update seumur hidup</li>
+      </ul>
+      <button class="btn-price" onclick="openModal('LIFETIME — Rp 100.000 / Selamanya')">BELI SEKARANG</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">SYAMAIRA MOD</div>
+  <div class="footer-copy">© 2024 SYAMAIRA EXAM MOD · ALL RIGHTS RESERVED<br>PEMBELIAN & INFO → JOIN DISCORD KAMI</div>
+  <a href="https://discord.gg/kvjkNfrFJP" target="_blank" class="dc-btn">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03z"/></svg>
+    JOIN DISCORD
+  </a>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal" onclick="closeOut(event)">
+  <div class="modal">
+    <div class="modal-bar">
+      <span>// VERIFIKASI PEMBELIAN</span>
+      <button class="modal-x" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-selected" id="mplan">PRO — Rp 85.000 / 90 Hari</div>
+      <div class="modal-h">CARA BELI</div>
+      <p class="modal-p">Semua transaksi dilakukan melalui Discord kami. Ikuti langkah berikut untuk mendapatkan akses.</p>
+      <ul class="steps">
+        <li><span class="sn">01</span>Klik tombol di bawah untuk masuk ke server Discord Syamaira MOD</li>
+        <li><span class="sn">02</span>Masuk ke channel <strong>#pembelian</strong> atau DM admin langsung</li>
+        <li><span class="sn">03</span>Kirim paket yang ingin dibeli & ikuti instruksi pembayaran dari admin</li>
+        <li><span class="sn">04</span>Setelah konfirmasi, API key dikirim ke akun kamu secara otomatis ✓</li>
+      </ul>
+      <div class="modal-actions">
+        <button class="btn-cancel" onclick="closeModal()">BATAL</button>
+        <a href="https://discord.gg/kvjkNfrFJP" target="_blank" class="btn-dc" onclick="closeModal()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03z"/></svg>
+          BUKA DISCORD
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function openModal(plan) {
+  document.getElementById('mplan').textContent = plan;
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closeOut(e) { if (e.target === document.getElementById('modal')) closeModal(); }
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+// Scroll reveal
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.sec, .api-sec').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
